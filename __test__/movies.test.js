@@ -19,8 +19,8 @@ beforeAll(async () => {
     token = user.generateToken();
 
     movies = await Movie.bulkCreate([
-      { title: "Movie 1", synopsis: "Synopsis Movie 1", trailerUrl: "Trailer Movie 1", imgUrl: "Imager Movie 1", rating: 5, status: "active" },
-      { title: "Movie 2", synopsis: "Synopsis Movie 2", trailerUrl: "Trailer Movie 2", imgUrl: "Imager Movie 2", rating: 5, status: "active" },
+      { title: "Movie 1", synopsis: "Synopsis Movie 1", trailerUrl: "Trailer Movie 1", imgUrl: "Image Movie 1", rating: 5, status: "active" },
+      { title: "Movie 2", synopsis: "Synopsis Movie 2", trailerUrl: "Trailer Movie 2", imgUrl: "Image Movie 2", rating: 5, status: "active" },
     ]);
   } catch (error) {
     console.log(error);
