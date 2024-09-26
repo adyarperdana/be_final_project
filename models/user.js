@@ -1,4 +1,6 @@
 'use strict';
+const { hashSync, genSaltSync, compareSync } = require("bcrypt");
+const { sign, verify } = require("jsonwebtoken");
 const {
   Model
 } = require('sequelize');
@@ -11,6 +13,16 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       User.hasMany(models.Bookmark, { foreignKey: "userId" });
+    }
+
+    generateToken() {
+      const { id, email } = this;
+      const token = sign({ id, email }, process.env.JWT_SECRET);
+      return token;
+    }
+
+    verify(password) {
+      return compareSync(password, this.password);
     }
   }
   User.init({

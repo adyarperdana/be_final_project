@@ -13,7 +13,7 @@ beforeEach(async () => {
         username: 'duplicateuser',
         phoneNumber: '08111113',
       });
-  });
+});
 
 afterAll(() => {
   User.destroy({ truncate: true, cascade: true })
@@ -150,7 +150,6 @@ describe("EndPoint /api/v1/login", () => {
       expect(response.body.name).toBe("Test User");
       expect(response.body.role).toBe("customer");
       expect(response.body.id).toEqual(expect.any(Number));
-    
     });
 });
 
