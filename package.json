@@ -1,8 +1,9 @@
 {
-  "name": "assignment2",
+  "name": "final_project",
   "version": "1.0.0",
   "main": "app.js",
   "scripts": {
+    "start": "node --watch server.js",
     "test": "jest"
   },
   "keywords": [],

@@ -1,3 +1,5 @@
+require("dotenv").config();
+const { PASSWORD_TEST } = process.env;
 const request = require("supertest");
 const app = require("../app");
 const { sequelize, User } = require("../models");
@@ -8,7 +10,7 @@ beforeEach(async () => {
       .set('Content-Type', 'application/json')
       .send({
         email: 'duplicate@mail.com',
-        password: 'rahasia',
+        password: PASSWORD_TEST,
         name: 'Test User',
         username: 'duplicateuser',
         phoneNumber: '08111113',
@@ -30,7 +32,7 @@ describe("EndPoint /api/v1/register", () => {
     const response = await request(app)
       .post("/api/v1/register")
       .set("Content-Type", "application/json")
-      .send({ email: "testreg@mail.com", password: "rahasia", name: "Test Nama", username: "usertest", phoneNumber: "08111112"  });
+      .send({ email: "testreg@mail.com", password: PASSWORD_TEST, name: "Test Nama", username: "usertest", phoneNumber: "08111112"  });
 
     expect(response.statusCode).toBe(201);
     expect(response.body.message).toBe("Success creating new user");
@@ -64,7 +66,7 @@ describe("EndPoint /api/v1/register", () => {
       .post('/api/v1/register')
       .set('Content-Type', 'application/json')
       .send({
-        password: 'rahasia', 
+        password: PASSWORD_TEST, 
       });
 
       expect(response.statusCode).toEqual(expect.any(Number));
@@ -82,7 +84,7 @@ describe("EndPoint /api/v1/register", () => {
       .set('Content-Type', 'application/json')
       .send({
         email: 'duplicate@mail.com',
-        password: 'rahasia',
+        password: PASSWORD_TEST,
         name: 'Another User',
         username: 'anotheruser',
         phoneNumber: '08111114',
@@ -102,7 +104,7 @@ describe("EndPoint /api/v1/register", () => {
       .set('Content-Type', 'application/json')
       .send({
         email: 'another@mail.com',
-        password: 'rahasia',
+        password: PASSWORD_TEST,
         name: 'Another User',
         username: 'duplicateuser',
         phoneNumber: '08111114',
@@ -122,7 +124,7 @@ describe("EndPoint /api/v1/register", () => {
       .set('Content-Type', 'application/json')
       .send({
         email: 'another@mail.com',
-        password: 'rahasia',
+        password: PASSWORD_TEST,
         name: 'Another User',
         username: 'anotheruser',
         phoneNumber: '08111113',
@@ -141,7 +143,7 @@ describe("EndPoint /api/v1/login", () => {
       const response = await request(app)
         .post("/api/v1/login")
         .set("Content-Type", "application/json")
-        .send({ email: "duplicate@mail.com", password: "rahasia"  });
+        .send({ email: "duplicate@mail.com", password: PASSWORD_TEST  });
   
       expect(response.statusCode).toBe(200);
       expect(response.body.accessToken).toEqual(expect.any(String));

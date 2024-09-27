@@ -1,3 +1,5 @@
+require("dotenv").config();
+const { PASSWORD_TEST } = process.env;
 const request = require("supertest");
 const app = require("../app");
 const { sequelize, Movie, Bookmark, User } = require("../models");
@@ -11,12 +13,12 @@ beforeAll(async () => {
   try {
     // create user & get token
     users = await User.bulkCreate([
-        { email: "user1@mail.com", password: "rahasiajuga", name: 'Test User 1', username: 'testuser1', phoneNumber: '08111121' },
-        { email: "user2@mail.com", password: "rahasiajuga", name: 'Test User 2', username: 'testuser2', phoneNumber: '08111122' },
+        { email: "user1@mail.com", password: PASSWORD_TEST, name: 'Test User 1', username: 'testuser1', phoneNumber: '08111121' },
+        { email: "user2@mail.com", password: PASSWORD_TEST, name: 'Test User 2', username: 'testuser2', phoneNumber: '08111122' },
     ]);
   
 
-    token = users[0].generateToken();
+    token = await users[0].generateToken();
 
     movies = await Movie.bulkCreate([
       { title: "Movie Bookmark 1", synopsis: "Synopsis Movie 1", trailerUrl: "Trailer Movie 1", imgUrl: "Image Movie 1", rating: 5, status: "active" },

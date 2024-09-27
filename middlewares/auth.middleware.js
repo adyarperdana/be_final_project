@@ -7,7 +7,7 @@ const auth = async (req, res, next) => {
 
   try {
     if (!authorization) throw new UnauthorizedError("Please Login First!");
-    const [type, token] = authorization.split(" ");
+    const [, token] = authorization.split(" ");
     
     const decoded = verify(token, process.env.JWT_SECRET);
     const user = await User.findOne({ where: { email: decoded.email } });

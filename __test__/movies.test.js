@@ -1,3 +1,5 @@
+require("dotenv").config();
+const { PASSWORD_TEST } = process.env;
 const request = require("supertest");
 const app = require("../app");
 const { sequelize, Movie, User } = require("../models");
@@ -10,7 +12,7 @@ beforeAll(async () => {
     // create user & get token
     const user = await User.create({
       email: "testmovies@mail.com",
-      password: "rahasiajuga",
+      password: PASSWORD_TEST,
       name: 'Test Movies',
       username: 'testmoviesuser',
       phoneNumber: '08111119',
