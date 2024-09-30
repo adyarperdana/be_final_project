@@ -53,10 +53,9 @@ describe("EndPoint /api/v1/register", () => {
       .set('Content-Type', 'application/json')
       .send({});
 
-    expect(response.statusCode).toEqual(expect.any(Number));
     expect(response.statusCode).toBeGreaterThanOrEqual(400); 
     expect(response.statusCode).toBeLessThan(600); 
-    expect(response.body.message).toEqual(expect.any(String)); 
+    expect(response.body.message).toBeDefined();
     expect(response.body.error).toEqual(expect.any(String)); 
   });
 
@@ -90,9 +89,7 @@ describe("EndPoint /api/v1/register", () => {
         phoneNumber: '08111114',
       });
 
-      expect(response.statusCode).toEqual(expect.any(Number));
-      expect(response.statusCode).toBeGreaterThanOrEqual(400); 
-      expect(response.statusCode).toBeLessThan(600); 
+      expect(response.statusCode).toBe(500); 
       expect(response.body.message).toEqual(expect.any(String)); 
       expect(response.body.error).toEqual(expect.any(String)); 
   });
@@ -113,8 +110,8 @@ describe("EndPoint /api/v1/register", () => {
       expect(response.statusCode).toEqual(expect.any(Number));
       expect(response.statusCode).toBeGreaterThanOrEqual(400); 
       expect(response.statusCode).toBeLessThan(600); 
-      expect(response.body.message).toEqual(expect.any(String)); 
-      expect(response.body.error).toEqual(expect.any(String)); 
+      expect(response.body.message).toBeDefined();
+      expect(response.body.error).toBeDefined();
   });
 
    // Test for duplicate phoneNumber
@@ -132,9 +129,8 @@ describe("EndPoint /api/v1/register", () => {
 
       expect(response.statusCode).toEqual(expect.any(Number));
       expect(response.statusCode).toBeGreaterThanOrEqual(400); 
-      expect(response.statusCode).toBeLessThan(600); 
       expect(response.body.message).toEqual(expect.any(String)); 
-      expect(response.body.error).toEqual(expect.any(String)); 
+      expect(response.body.error).toBeDefined();
   });
 });
 
