@@ -21,11 +21,11 @@ module.exports = {
   },
   production: {
     username: DB_USER || "postgres",
-    password: DB_PASS || "postgres",
+    password: DB_PASS || "OvEhNgPNqpKKeIzYtWoUpstWHfOcfIaX",
     database: DB_NAME || "final_project_prod",
-    host: DB_HOST || "db",
+    host: DB_HOST || "autorack.proxy.rlwy.net",
     dialect: "postgres",
-    port: DB_PORT || 5432,
+    port: DB_PORT || 21528 ,
     logging: false,
   },
 };
