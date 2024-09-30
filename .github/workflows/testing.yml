@@ -16,6 +16,7 @@ env:
   DB_NAME: final_project_test
   DB_USER: postgres
   DB_PASS: postgres
+  PASSWORD_TEST: rahasiajuga
 
 jobs:
   test:
