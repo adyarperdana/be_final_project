@@ -49,4 +49,4 @@ jobs:
       - name: Migration
         run: npx sequelize db:migrate --env test
       - name: Testing
-        run: npm test auth.test.js
+        run: npm test -- --runInBand
